@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseUtil {
+
+    public static final String URL = "https://parabank.parasoft.com/parabank/index.htm";
+
     private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     //To quit the drivers and browsers at the end only.

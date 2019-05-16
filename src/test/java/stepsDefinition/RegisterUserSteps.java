@@ -23,7 +23,7 @@ public class RegisterUserSteps extends BaseUtil {
     //Start background
     @Given("Account holder is on Parabank Website")
     public void accountHolderIsOnParabankWebsite() {
-        getDriver().get("https://parabank.parasoft.com/parabank/index.htm");
+        getDriver().get(URL);
     }
 
     @When("Account holder press on Register link")

@@ -13,7 +13,7 @@ Feature: Check the functionality of the Register feature
   Scenario: Check the response on register an online bank account with valid data and all the fields filled
     When The account holder is filling all the fields
       | First name | Last name | Address        | City          | State    | Zip Code | Phone    | SSN | Username | Password | Confirm |
-      | David      | Sun       | 228 Park Ave S | New York City | New York | NY 10003 | 555-1122 | 333 | Davidi | 123456   | 123456  |
+      | David      | Sun       | 228 Park Ave S | New York City | New York | NY 10003 | 555-1122 | 333 | David1   | 123456   | 123456  |
     And Account holder press on REGISTER button
     Then The account holder should see a success message
     When Account holder press the Log Out button
@@ -23,7 +23,7 @@ Feature: Check the functionality of the Register feature
   Scenario: Check the response on register an online bank account with invalid data and all the fields are filled
     When The account holder is filling all the fields with invalid data
       | First name | Last name | Address | City | State | Zip Code | Phone | SSN | Username | Password | Confirm |
-      | 1          | 1         | 1       | 1    | 1     | 1        | 1     | 1   | 4        | 1        | 1       |
+      | a          | a         | a       | a    | a     | a        | a     | a   | a        | a        | a       |
     And Account holder press on REGISTER button
     Then The account holder should see a fail message
     When Account holder press the Parabank Logo
@@ -33,7 +33,7 @@ Feature: Check the functionality of the Register feature
   Scenario: Check the response on register an online bank account with valid data and all but one field not filled
     When The account holder is filling all the fields with valid data and all but one field not filled
       | First name | Last name | Address    | City          | State    | Zip Code | Phone    | SSN | Username | Password | Confirm |
-      | April      | Spring    | Park Ave S | New York City | New York |          | 555-8888 | 666 | Aprili   | ppppp    | ppppp   |
+      | April      | Spring    | Park Ave S | New York City | New York |          | 555-3344 | 555 | AprilS   | asdfg    | asdfg   |
     And Account holder press on REGISTER button
     Then The account holder should see a required field message
     When Account holder press the Parabank Logo
@@ -52,15 +52,15 @@ Feature: Check the functionality of the Register feature
   @TC05
   Scenario:
     When The account holder is filling all the fields with valid data
-      | First name | Last name | Address  | City          | State    | Zip Code | Phone | SSN | Username | Password | Confirm |
-      | May        | Summer    | Park Ave | New York City | New York | 10005    |       | 999 | may2      | may      | may     |
+      | First name | Last name | Address  | City          | State    | Zip Code | Phone | SSN | Username  | Password | Confirm |
+      | May        | Summer    | Park Ave | New York City | New York | 10005    |       | 999 | MaySummer | may123   | may123  |
     And Account holder press on REGISTER button
     Then The account holder should see a success message
     When Account holder press the Log Out button
     And Account holder press on Register link
     And The account holder is filling again the fields with the same data
-      | First name | Last name | Address  | City          | State    | Zip Code | Phone | SSN | Username | Password | Confirm |
-      | May        | Summer    | Park Ave | New York City | New York | 10005    |       | 999 | may2      | may      | may     |
+      | First name | Last name | Address  | City          | State    | Zip Code | Phone | SSN | Username  | Password | Confirm |
+      | May        | Summer    | Park Ave | New York City | New York | 10005    |       | 999 | MaySummer | may123   | may123  |
     And Account holder press on REGISTER button
     Then The account holder should see an error message
     When Account holder press the home square button
