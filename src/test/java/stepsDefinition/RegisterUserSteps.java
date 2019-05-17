@@ -11,9 +11,6 @@ import pageObject.PBAccountPage;
 import pageObject.PBHomePage;
 import pageObject.PBRegisterPage;
 
-import java.util.List;
-import java.util.Map;
-
 public class RegisterUserSteps extends BaseUtil {
 
     PBHomePage pbHomePage = new PBHomePage();
@@ -41,20 +38,7 @@ public class RegisterUserSteps extends BaseUtil {
     //First scenario - TC01
     @When("The account holder is filling all the fields")
     public void theAccountHolderIsFillingAllTheFields(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @And("Account holder press on REGISTER button")
@@ -82,20 +66,7 @@ public class RegisterUserSteps extends BaseUtil {
     //Second scenario - TC02
     @When("The account holder is filling all the fields with invalid data")
     public void theAccountHolderIsFillingAllTheFieldsWithInvalidData(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @Then("The account holder should see a fail message")
@@ -103,31 +74,11 @@ public class RegisterUserSteps extends BaseUtil {
         Assert.assertFalse(pbAccountPage.getWelcomePannel().getAttribute("textContent").contains("Welcome"));
     }
 
-    @When("Account holder press the Parabank Logo")
-    public void accountHolderPressTheParabankLogo() {
-        pbRegisterPage.clickOnElement(pbRegisterPage.getParabankLogo());
-
-
-    }
-
 
     //Third scenario - TC03
-    @When("The account holder is filling all the fields with valid data and all but one field not filled")
-    public void theAccountHolderIsFillingAllTheFieldsWithValidDataAndAllButOneFieldNotFilled(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+    @When("The account holder is filling all the fields with valid data and all but zip code field not filled")
+    public void theAccountHolderIsFillingAllTheFieldsWithValidDataAndAllButZipCodeFieldNotFilled(DataTable table) {
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @Then("The account holder should see a required field message")
@@ -139,20 +90,7 @@ public class RegisterUserSteps extends BaseUtil {
     //Fourth scenario - TC04
     @When("The account holder is filling all the fields with no data")
     public void theAccountHolderIsFillingAllTheFieldsWithNoData(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @Then("The account holder should see a required fields message")
@@ -169,46 +107,16 @@ public class RegisterUserSteps extends BaseUtil {
         Assert.assertTrue(pbRegisterPage.getConfirmErrorMessage().isDisplayed());
     }
 
-    @When("Account holder press the home square button")
-    public void accountHolderPressTheHomeSquareButton() {
-        pbRegisterPage.clickOnElement(pbRegisterPage.getHomeSquareButton());
-    }
 
     //Fifth scenario - TC05
     @When("The account holder is filling all the fields with valid data")
     public void theAccountHolderIsFillingAllTheFieldsWithValidData(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @And("The account holder is filling again the fields with the same data")
     public void theAccountHolderIsFillingAgainTheFieldsWithTheSameData(DataTable table) {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        for (int i = 0; i < data.size(); i++) {
-            pbRegisterPage.getFirstNameField().sendKeys(data.get(i).get("First name"));
-            pbRegisterPage.getLastNameField().sendKeys(data.get(i).get("Last name"));
-            pbRegisterPage.getAddressField().sendKeys(data.get(i).get("Address"));
-            pbRegisterPage.getCityField().sendKeys(data.get(i).get("City"));
-            pbRegisterPage.getStateField().sendKeys(data.get(i).get("State"));
-            pbRegisterPage.getZipCodeField().sendKeys(data.get(i).get("Zip Code"));
-            pbRegisterPage.getPhoneNumberField().sendKeys(data.get(i).get("Phone"));
-            pbRegisterPage.getSsnField().sendKeys(data.get(i).get("SSN"));
-            pbRegisterPage.getUsernameField().sendKeys(data.get(i).get("Username"));
-            pbRegisterPage.getPasswordField().sendKeys(data.get(i).get("Password"));
-            pbRegisterPage.getConfirmPasswordField().sendKeys(data.get(i).get("Confirm"));
-        }
+        pbRegisterPage.fillingFieldsWithData(table);
     }
 
     @Then("The account holder should see an error message")

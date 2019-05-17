@@ -1,8 +1,12 @@
 package pageObject;
 
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+import java.util.Map;
 
 public class PBRegisterPage extends BasePage {
     public PBRegisterPage() {
@@ -145,10 +149,6 @@ public class PBRegisterPage extends BasePage {
         return zipCodeErrorMessage;
     }
 
-    public WebElement getHomeSquareButton() {
-        return homeSquareButton;
-    }
-
     public WebElement getFirstNameErrorMessage() {
         return firstNameErrorMessage;
     }
@@ -193,6 +193,23 @@ public class PBRegisterPage extends BasePage {
     @Override
     public void waitForVisibility(WebElement element) {
         super.waitForVisibility(element);
+    }
+
+    public void fillingFieldsWithData(DataTable table) {
+        List<Map<String, String>> data = table.asMaps(String.class, String.class);
+        for (int i = 0; i < data.size(); i++) {
+            firstNameField.sendKeys(data.get(i).get("First name"));
+            lastNameField.sendKeys(data.get(i).get("Last name"));
+            addressField.sendKeys(data.get(i).get("Address"));
+            cityField.sendKeys(data.get(i).get("City"));
+            stateField.sendKeys(data.get(i).get("State"));
+            zipCodeField.sendKeys(data.get(i).get("Zip Code"));
+            phoneNumberField.sendKeys(data.get(i).get("Phone"));
+            ssnField.sendKeys(data.get(i).get("SSN"));
+            usernameField.sendKeys(data.get(i).get("Username"));
+            passwordField.sendKeys(data.get(i).get("Password"));
+            confirmPasswordField.sendKeys(data.get(i).get("Confirm"));
+        }
     }
 
 }

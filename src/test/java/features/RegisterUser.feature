@@ -26,17 +26,17 @@ Feature: Check the functionality of the Register feature
       | a          | a         | a       | a    | a     | a        | a     | a   | a        | a        | a       |
     And Account holder press on REGISTER button
     Then The account holder should see a fail message
-    When Account holder press the Parabank Logo
+    When Account holder press the Log Out button
     Then The account holder should see the Home page
 
   @TC03
-  Scenario: Check the response on register an online bank account with valid data and all but one field not filled
-    When The account holder is filling all the fields with valid data and all but one field not filled
+  Scenario: Check the response on register an online bank account with valid data and all but zip code field not filled
+    When The account holder is filling all the fields with valid data and all but zip code field not filled
       | First name | Last name | Address    | City          | State    | Zip Code | Phone    | SSN | Username | Password | Confirm |
       | April      | Spring    | Park Ave S | New York City | New York |          | 555-3344 | 555 | AprilS   | asdfg    | asdfg   |
     And Account holder press on REGISTER button
     Then The account holder should see a required field message
-    When Account holder press the Parabank Logo
+    When Account holder press the Log Out button
     Then The account holder should see the Home page
 
   @TC04
@@ -46,7 +46,7 @@ Feature: Check the functionality of the Register feature
       |            |           |         |      |       |          |       |     |          |          |         |
     And Account holder press on REGISTER button
     Then The account holder should see a required fields message
-    When Account holder press the home square button
+    When Account holder press the Log Out button
     Then The account holder should see the Home page
 
   @TC05
@@ -63,5 +63,5 @@ Feature: Check the functionality of the Register feature
       | May        | Summer    | Park Ave | New York City | New York | 10005    |       | 999 | MaySummer | may123   | may123  |
     And Account holder press on REGISTER button
     Then The account holder should see an error message
-    When Account holder press the home square button
+    When Account holder press the Log Out button
     Then The account holder should see the Home page
